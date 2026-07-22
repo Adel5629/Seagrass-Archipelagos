@@ -1,0 +1,34 @@
+[
+  {
+    "id": "fourni",
+    "name": "Fourni",
+    "lat": 37.573,
+    "lng": 26.504,
+    "zoom": 12,
+    "pdfs": [
+  { "label": "Overview — entire island", "file": "overview.pdf" },
+  { "label": "Overview — North-East", "file": "overview_ne.pdf" },
+  { "label": "Overview — North-West", "file": "overview_nw.pdf" },
+  { "label": "Overview — South-East", "file": "overview_se.pdf" },
+  { "label": "Overview — South-West", "file": "overview_sw.pdf" },
+  { "label": "Consensus — entire island", "file": "consensus.pdf" },
+  { "label": "Consensus — North-East", "file": "consensus_ne.pdf" },
+  { "label": "Consensus — North-West", "file": "consensus_nw.pdf" },
+  { "label": "Consensus — South-East", "file": "consensus_se.pdf" },
+  { "label": "Consensus — South-West", "file": "consensus_sw.pdf" }
+  ],
+    "layers": {
+      "seagrass_sources": [
+        { "id": "Fourni_seagrass_data_drone_archipelagos", "label": "Source drone Archipelagos", "color": "#1b9e77" },
+        { "id": "Fourni_seagrass_data_fisherman_Kennis-Van-Dissers_archipelagos", "label": "Source fisherman Archipelagos", "color": "#d95f02" },
+        { "id": "Fourni_seagrass_data_UNEP-WCMC", "label": "Source UNEP-WCMC", "color": "#7570b3" },
+        { "id": "Fourni_seagrass_data_panayotidis", "label": "Source Panayotidis", "color": "#e7298a" },
+        { "id": "Fourni_seagrass_data_topouzelis", "label": "Source Topouzelis", "color": "#66a61e" }
+      ],
+      "consensus": "consensus",
+      "consensus_field": "Nb_Src",
+      "protected_areas": "Fourni_protected_area",
+      "protected_areas_label": "Natura 2000"
+    }
+  }
+]

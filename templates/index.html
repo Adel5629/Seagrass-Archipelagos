@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Seagrass & protected areas — Greece</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+  <header class="topbar">
+    <h1>Seagrass &amp; protected areas — Greece</h1>
+    <p class="subtitle">Click on an island to explore the data</p>
+  </header>
+
+  <div class="layout">
+
+    <aside id="sidebar" class="sidebar sidebar--collapsed">
+      <div class="sidebar-header">
+        <h2 id="island-name">Select an island</h2>
+        <button id="close-sidebar" aria-label="Close panel">&times;</button>
+      </div>
+
+      <div class="sidebar-body">
+
+        <section class="panel">
+          <h3>Sources — Seagrass</h3>
+          <div id="sources-list" class="checkbox-list">
+            <!-- généré dynamiquement -->
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Consensus zone</h3>
+          <label class="toggle-row">
+            <input type="checkbox" id="toggle-consensus" />
+            <span>Display consensus layer</span>
+          </label>
+
+          <div id="consensus-controls" class="consensus-controls hidden">
+            <label for="consensus-slider">
+              Sources in minimal agreement : <span id="consensus-value">1</span>
+            </label>
+            <input type="range" id="consensus-slider" min="1" max="5" value="1" step="1" />
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Protected areas</h3>
+          <p id="protected-status" class="muted">No data available for this island at the moment.</p>
+        </section>
+
+        <section class="panel">
+          <h3>Printed map (QGIS)</h3>
+          <div id="pdf-list" class="pdf-list"></div>
+        </section>
+
+      </div>
+    </aside>
+
+    <main class="map-wrapper">
+      <div id="map"></div>
+    </main>
+
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+</body>
+</html>
