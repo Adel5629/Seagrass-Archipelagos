@@ -22,7 +22,7 @@ fetch("/api/islands")
       marker.on("click", () => selectIsland(island));
     });
   })
-  .catch((err) => console.error("Erreur de chargement des îles :", err));
+  .catch((err) => console.error("Error loading islands :", err));
 
 function selectIsland(island) {
   currentIsland = island;
@@ -67,7 +67,7 @@ function buildSourcesList(island) {
 function loadSourceLayer(island, src) {
   fetch(`/api/layer/${island.id}/${src.id}`)
     .then((r) => {
-      if (!r.ok) throw new Error(`Couche ${src.id} introuvable`);
+      if (!r.ok) throw new Error(`Layer ${src.id} not found`);
       return r.json();
     })
     .then((geojson) => {
@@ -129,7 +129,7 @@ function loadConsensusLayer(island, minSources) {
 
   fetch(`/api/layer/${island.id}/${island.layers.consensus}`)
     .then((r) => {
-      if (!r.ok) throw new Error("Couche de consensus introuvable");
+      if (!r.ok) throw new Error("Consensus layer not found");
       return r.json();
     })
     .then((geojson) => {
@@ -143,7 +143,7 @@ function loadConsensusLayer(island, minSources) {
       };
 
       if (filtered.features.length === 0) {
-        console.warn(`Aucune entité avec le champ "${field}" >= ${minSources}`);
+        console.warn(`No features with field "${field}" >= ${minSources}`);
       }
 
       activeLayers.consensus = L.geoJSON(filtered, {
@@ -154,7 +154,7 @@ function loadConsensusLayer(island, minSources) {
           fillOpacity: 0.55,
         }),
         onEachFeature: (feature, layer) => {
-          layer.bindPopup(`${feature.properties[field]} source(s) d'accord`);
+          layer.bindPopup(`${feature.properties[field]} source(s) in minimal agreement`);
         },
       }).addTo(map);
     })
@@ -181,7 +181,7 @@ function consensusColor(n) {
 
 function buildProtectedAreasStatus(island) {
   const status = document.getElementById("protected-status");
-  const label = island.layers.protected_areas_label || "Aires protégées";
+  const label = island.layers.protected_areas_label || "Protected areas";
 
   if (island.layers.protected_areas) {
     status.innerHTML = `
@@ -192,18 +192,18 @@ function buildProtectedAreasStatus(island) {
     `;
     loadProtectedAreas(island);
   } else {
-    status.textContent = "Aucune donnée disponible pour cette île pour le moment.";
+    status.textContent = "No data is available for this island at the moment.";
   }
 }
 
 function loadProtectedAreas(island) {
   fetch(`/api/layer/${island.id}/${island.layers.protected_areas}`)
     .then((r) => {
-      if (!r.ok) throw new Error("Couche des aires protégées introuvable");
+      if (!r.ok) throw new Error("Protected areas layer not found");
       return r.json();
     })
     .then((geojson) => {
-      const label = island.layers.protected_areas_label || "Aire protégée";
+      const label = island.layers.protected_areas_label || "Protected area";
       const layer = L.geoJSON(geojson, {
         style: { color: "#3f7a5c", weight: 2, fillOpacity: 0.15, dashArray: "4 3" },
       }).addTo(map);
@@ -219,7 +219,7 @@ function buildPdfLink(island) {
 
   const pdfs = island.pdfs || [];
   if (pdfs.length === 0) {
-    container.innerHTML = '<p class="muted">Aucun PDF disponible.</p>';
+    container.innerHTML = '<p class="muted">No PDF available</p>';
     return;
   }
 
