@@ -99,6 +99,9 @@ function resetConsensusControls() {
   const slider = document.getElementById("consensus-slider");
   const valueLabel = document.getElementById("consensus-value");
 
+  const nbSources = (currentIsland.layers.seagrass_sources || []).length;
+  slider.max = nbSources;
+  
   toggle.checked = false;
   controls.classList.add("hidden");
   slider.value = 1;

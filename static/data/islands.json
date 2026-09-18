@@ -30,5 +30,24 @@
       "protected_areas": "Fourni_protected_area",
       "protected_areas_label": "Natura 2000"
     }
+  },
+  {
+    "id": "samos",
+    "name": "Samos",
+    "lat": 37.754,
+    "lng": 26.977,
+    "zoom": 11,
+    "pdfs": [],
+    "layers": {
+      "seagrass_sources": [
+        { "id": "Samos_seagrass_data_panayotidis", "label": "Source Panayotidis", "color": "#e7298a" },
+        { "id": "Samos_seagrass_data_topouzelis", "label": "Source Topouzelis", "color": "#66a61e" },
+        { "id": "Samos_seagrass_data_UNEP-WCMC", "label": "Source UNEP-WCMC", "color": "#7570b3" }
+      ],
+      "consensus": "consensus",
+      "consensus_field": "Nb_Src",
+      "protected_areas": "Samos_protected_area",
+      "protected_areas_label": "Natura 2000"
+    }
   }
 ]
