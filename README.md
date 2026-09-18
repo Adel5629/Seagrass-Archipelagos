@@ -4,6 +4,10 @@ Local website developed with Flask + Leaflet to explore Posidonia seagrass and p
 
 The website allows several seagrass data sources to be displayed, as well as a consensus layer showing the number of sources that agree on the presence of seagrass in a given area.
 
+## Author
+
+Developed by Adélie Lizano during her internship at the Archipelagos Institute of Marine Conservation, 2026.
+
 ## 1. Installation (in VS Code)
 
 Open a terminal in VS Code (Terminal > New Terminal) at the root of the project:
